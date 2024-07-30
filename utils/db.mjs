@@ -1,4 +1,5 @@
 import pkg from 'mongodb';
+
 const { MongoClient } = pkg;
 
 class DBClient {
@@ -6,7 +7,7 @@ class DBClient {
     const host = process.env.DB_HOST || 'localhost';
     const port = process.env.DB_PORT || '27017';
     const database = process.env.DB_DATABASE || 'files_manager';
-    
+
     this.url = `mongodb://${host}:${port}`;
     this.dbName = database;
     this.client = new MongoClient(this.url, { useUnifiedTopology: true });
