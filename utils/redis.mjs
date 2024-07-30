@@ -20,9 +20,9 @@ class RedisClient {
       this.client.get(key, (err, reply) => {
         if (err) {
           console.error('Error getting value from Redis:', err);
-          return reject(err);
+          return reject(err); // Ensures a return value in case of error
         }
-        resolve(reply);
+        return resolve(reply); // Ensures a return value in case of success
       });
     });
   }
@@ -32,9 +32,9 @@ class RedisClient {
       this.client.setex(key, duration, value, (err) => {
         if (err) {
           console.error('Error setting value in Redis:', err);
-          return reject(err);
+          return reject(err); // Ensures a return value in case of error
         }
-        resolve();
+        return resolve(); // Ensures a return value in case of success
       });
     });
   }
@@ -44,9 +44,9 @@ class RedisClient {
       this.client.del(key, (err) => {
         if (err) {
           console.error('Error deleting value from Redis:', err);
-          return reject(err);
+          return reject(err); // Ensures a return value in case of error
         }
-        resolve();
+        return resolve(); // Ensures a return value in case of success
       });
     });
   }
